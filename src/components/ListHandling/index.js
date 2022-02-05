@@ -70,11 +70,21 @@ class ListHanding extends Component {
       newData.sort(this.compare)
       const fdata = newData.slice(0, 6)
 
-      this.setState({isSorted: !isSorted, fullList: newData, finalList: fdata})
+      this.setState({
+        isSorted: !isSorted,
+        fullList: newData,
+        finalList: fdata,
+        currnumber: 1,
+      })
     } else {
       const {rawData} = this.state
       const fdata = rawData.slice(0, 6)
-      this.setState({isSorted: !isSorted, fullList: rawData, finalList: fdata})
+      this.setState({
+        isSorted: !isSorted,
+        fullList: rawData,
+        finalList: fdata,
+        currnumber: 1,
+      })
     }
   }
 
@@ -117,14 +127,16 @@ class ListHanding extends Component {
 
     return (
       <div>
-        <p>submitted List</p>
+        <h1 className="ps-2">submitted List</h1>
         <div className="sort-names">
           <div className="p1-f">
-            <label htmlFor="sfirstname">Sort</label>
+            <label className="ps-1" htmlFor="sfirstname">
+              Sort
+            </label>
             <input type="checkbox" onClick={this.onSortData} id="sfirstname" />
           </div>
           <div>
-            <label className="p1" htmlFor="clastname">
+            <label className="p1 ps-1" htmlFor="clastname">
               Search
             </label>
             <input
@@ -138,12 +150,20 @@ class ListHanding extends Component {
           </div>
         </div>
         <div className="navigate">
-          <button type="button" onClick={this.onDecrement}>
-            left
+          <button
+            type="button"
+            className="button-navi"
+            onClick={this.onDecrement}
+          >
+            {'<-'}
           </button>
-          <p>{currnumber}</p>
-          <button type="button" onClick={this.onIncrment}>
-            right
+          <p className="center">{currnumber}</p>
+          <button
+            type="button"
+            className="button-navi"
+            onClick={this.onIncrment}
+          >
+            {'->'}
           </button>
         </div>
 

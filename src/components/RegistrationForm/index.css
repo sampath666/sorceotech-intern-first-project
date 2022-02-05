@@ -4,9 +4,15 @@
   justify-content: center;
   height: 100vh;
 }
+@media screen and (max-width: 998px) {
+  .bg1 {
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+}
 
 .c1 {
-  width: 80vw;
+  width: 90vw;
   height: 80vw;
   max-width: 750px;
   max-height: 600px;
@@ -24,10 +30,13 @@
   justify-content: center;
   padding-left: 30px;
   padding-right: 30px;
+  min-height: 500px;
 }
 .manage-list {
+  min-height: 350px;
   overflow-y: auto;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .h1 {

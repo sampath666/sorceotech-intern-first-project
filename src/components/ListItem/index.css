@@ -1,6 +1,6 @@
 .item-container {
   background-color: #dadfe3;
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
   padding: 10px;
   padding-left: 20px;
@@ -16,7 +16,8 @@
 }
 .box1 {
   width: 20%;
-  max-width: 200px;
+  max-width: 100px;
+  overflow-x: auto;
 }
 .para1 {
   color: #27282e;
@@ -24,8 +25,11 @@
   font-weight: 500;
 }
 
-.heading-item2 {
-  margin-left: 10px;
-  color: #257ddb;
-  font-size: 15px;
+@media screen and (max-width: 778px) {
+  .para1 {
+    font-size: 8px;
+  }
+  .heading-item {
+    font-size: 8px;
+  }
 }
