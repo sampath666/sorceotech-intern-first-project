@@ -1,0 +1,31 @@
+.item-container {
+  background-color: #dadfe3;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  margin-left: 10px;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.heading-item {
+  color: #257ddb;
+  font-size: 15px;
+}
+.box1 {
+  width: 20%;
+  max-width: 200px;
+}
+.para1 {
+  color: #27282e;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.heading-item2 {
+  margin-left: 10px;
+  color: #257ddb;
+  font-size: 15px;
+}

@@ -1,0 +1,48 @@
+.submitlist-container {
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+}
+.navigate {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  align-self: center;
+}
+.sort-names {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+}
+.p1-f {
+  margin-right: 10px;
+}
+.ins1 {
+  width: 200px;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.item-container1 {
+  background-color: #dadfe3;
+  width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.heading-item2 {
+  color: #f54266;
+  font-size: 15px;
+}
+.box1 {
+  width: 25%;
+  max-width: 200px;
+}
