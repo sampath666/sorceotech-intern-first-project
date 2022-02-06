@@ -15,19 +15,34 @@ class ListHanding extends Component {
   }
 
   componentDidMount() {
-    const {data} = this.props
+    this.getDataFetch()
+  }
 
-    const formatedData = data.slice(0, 6)
-    const num =
-      data.length % 6 === 0
-        ? parseInt(data.length / 6)
-        : Math.floor(data.length / 6) + 1
-    this.setState({
-      finalList: formatedData,
-      fullList: data,
-      number: num,
-      rawData: data,
-    })
+  getDataFetch = async () => {
+    const apiUrl = 'https://task-web-app-demo.herokuapp.com/forms/'
+    const options = {
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+
+    if (response.ok === true) {
+      const {sentdata} = this.props
+
+      const redata = await response.json()
+      const data = redata.concat(sentdata)
+
+      const formatedData = data.slice(0, 6)
+      const num =
+        data.length % 6 === 0
+          ? parseInt(data.length / 6)
+          : Math.floor(data.length / 6) + 1
+      this.setState({
+        finalList: formatedData,
+        fullList: data,
+        number: num,
+        rawData: data,
+      })
+    }
   }
 
   onIncrment = () => {

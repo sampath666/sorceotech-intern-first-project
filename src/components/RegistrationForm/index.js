@@ -4,23 +4,6 @@ import './index.css'
 
 import ListHandiling from '../ListHandling'
 
-const exampleList = [
-  {firstname: 'pepuslqaxl'},
-  {firstname: 'xaarciqudy'},
-  {firstname: 'vyumzhgozn'},
-  {firstname: 'drxnhfbjhd'},
-  {firstname: 'swarbdhkdb'},
-  {firstname: 'vprgxgxdnl'},
-  {firstname: 'lsfhncoaha'},
-  {firstname: 'eqckduadfy'},
-  {firstname: 'eonpwdeuvd'},
-  {firstname: 'wdyuuugqvg'},
-  {firstname: 'vkfjbkzony'},
-  {firstname: 'hjzhmhcddu'},
-  {firstname: 'fvubmwpied'},
-  {firstname: 'fwmqjlzkxw'},
-]
-
 class RegistrationForm extends Component {
   state = {
     firstname: '',
@@ -37,13 +20,35 @@ class RegistrationForm extends Component {
   }
 
   componentDidMount() {
-    this.setState({submittedList: exampleList})
+    let firstname = localStorage.getItem('firstname')
+    firstname = firstname === null ? '' : firstname
+
+    let lastname = localStorage.getItem('lastname')
+    lastname = firstname === null ? '' : lastname
+
+    let email = localStorage.getItem('email')
+    email = email === null ? '' : email
+
+    let message = localStorage.getItem('message')
+    message = message === null ? '' : message
+
+    let add = localStorage.getItem('add')
+    add = add === null ? '' : add
+
+    this.setState({
+      firstname,
+      lastname,
+      email,
+      message,
+      add,
+    })
   }
 
   isStringHasNumber = string => /\d/.test(string)
 
   onChangeFirstName = event => {
     const error = event.target.value === ''
+    localStorage.setItem('firstname', event.target.value)
     const isContainNumber = this.isStringHasNumber(event.target.value)
     if (isContainNumber === true) {
       const error2 = true
@@ -62,6 +67,7 @@ class RegistrationForm extends Component {
 
   onChangeLastName = event => {
     const error = event.target.value === ''
+    localStorage.setItem('lastname', event.target.value)
     const isContainNumber = this.isStringHasNumber(event.target.value)
     if (isContainNumber === true) {
       const error2 = true
@@ -79,25 +85,30 @@ class RegistrationForm extends Component {
   }
 
   onChangeemail = event => {
+    localStorage.setItem('email', event.target.value)
     this.setState({email: event.target.value})
   }
 
   onChangeMessage = event => {
+    localStorage.setItem('message', event.target.value)
     this.setState({message: event.target.value})
   }
 
   onChangeAdd = event => {
+    localStorage.setItem('add', event.target.value)
     this.setState({add: event.target.value})
   }
 
   onformatData = () => {
-    const {firstname, lastname, email, message, add, submittedList} = this.state
+    localStorage.clear()
+    const {firstname, lastname, email, message, add} = this.state
     const data = {firstname, lastname, email, message, add}
-    const formateddata = submittedList.concat(data)
+    const {submittedList} = this.state
+    const updateData = submittedList.concat(data)
 
     this.setState({
       isNotSubmitSucces: false,
-      submittedList: formateddata,
+      submittedList: updateData,
     })
   }
 
@@ -225,7 +236,8 @@ class RegistrationForm extends Component {
                 <input
                   id="additional"
                   type="textarea"
-                  rows={5}
+                  className="in1"
+                  rows={50}
                   cols={5}
                   name="addtional information"
                   value={add}
@@ -252,7 +264,7 @@ class RegistrationForm extends Component {
                 </button>
 
                 <div className="manage-list">
-                  <ListHandiling data={submittedList} />
+                  <ListHandiling sentdata={submittedList} />
                 </div>
               </>
             )}
