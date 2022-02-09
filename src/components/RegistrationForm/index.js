@@ -17,6 +17,8 @@ class RegistrationForm extends Component {
     message: '',
     add: '',
     submittedList: [],
+    isErrorEmail: false,
+    EmailErrorMessage: '',
   }
 
   componentDidMount() {
@@ -86,6 +88,13 @@ class RegistrationForm extends Component {
 
   onChangeemail = event => {
     localStorage.setItem('email', event.target.value)
+    if (event.target.value === '') {
+      this.setState({
+        email: event.target.value,
+        isErrorEmail: true,
+        EmailErrorMessage: 'Required',
+      })
+    }
     this.setState({email: event.target.value})
   }
 
@@ -114,7 +123,8 @@ class RegistrationForm extends Component {
 
   submitTriggered = event => {
     event.preventDefault()
-    const {firstname, lastname} = this.state
+    const {firstname, lastname, email} = this.state
+    console.log(lastname)
     if (firstname === '' && lastname === '') {
       this.setState({
         isErrorFirstname: true,
@@ -126,6 +136,8 @@ class RegistrationForm extends Component {
       this.setState({isErrorFirstname: true, firstNameError: 'Required'})
     } else if (lastname === '') {
       this.setState({isErrorLastname: true, lastNameError: 'Required'})
+    } else if (email === '') {
+      this.setState({EmailErrorMessage: 'Required', isErrorEmail: true})
     } else {
       this.onformatData()
     }
@@ -165,6 +177,8 @@ class RegistrationForm extends Component {
       message,
       add,
       submittedList,
+      isErrorEmail,
+      EmailErrorMessage,
     } = this.state
 
     const inFclass = isErrorFirstname ? 'in1 in2' : 'in1'
@@ -217,6 +231,7 @@ class RegistrationForm extends Component {
                   value={email}
                   onChange={this.onChangeemail}
                 />
+                {isErrorEmail && <p>{EmailErrorMessage}</p>}
 
                 <label htmlFor="message" className="p1">
                   Message
